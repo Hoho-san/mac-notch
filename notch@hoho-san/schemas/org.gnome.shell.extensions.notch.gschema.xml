@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.notch" path="/org/gnome/shell/extensions/notch/">
+    <key name="compact-width" type="i">
+      <range min="60" max="800"/>
+      <default>160</default>
+      <summary>Minimum width of the compact notch</summary>
+      <description>Logical pixels. The notch grows past this if the clock needs more room.</description>
+    </key>
+    <key name="compact-height" type="i">
+      <range min="0" max="120"/>
+      <default>0</default>
+      <summary>Height of the compact notch</summary>
+      <description>Logical pixels. 0 matches the top bar height.</description>
+    </key>
+    <key name="expanded-width" type="i">
+      <range min="200" max="1200"/>
+      <default>440</default>
+      <summary>Width of the expanded notch</summary>
+    </key>
+    <key name="media-activity" type="b">
+      <default>true</default>
+      <summary>Show music in the compact notch</summary>
+      <description>While something plays, show its album art and a visualizer at the notch's edges.</description>
+    </key>
+    <key name="smooth-visualizer" type="b">
+      <default>true</default>
+      <summary>Smooth music visualizer</summary>
+      <description>Smooth bars redraw every frame while music plays. Off, they step a few times a second, which uses about a fifth of the CPU.</description>
+    </key>
+    <key name="osd" type="b">
+      <default>true</default>
+      <summary>Show volume and brightness in the notch</summary>
+      <description>Replaces GNOME's on-screen pop-up on the primary monitor. Full-screen apps, which hide the notch, still get GNOME's.</description>
+    </key>
+    <key name="clipboard" type="b">
+      <default>true</default>
+      <summary>Notify when something is copied</summary>
+      <description>Copying shows a "Copied to clipboard" notification, which opens the notch. It isn't kept in the notification list, and what was copied is never read.</description>
+    </key>
+    <key name="notifications" type="b">
+      <default>true</default>
+      <summary>Show notifications in the notch</summary>
+      <description>New notifications open the notch instead of showing a banner. Full-screen apps, which hide the notch, still get GNOME's banners.</description>
+    </key>
+    <key name="battery" type="b">
+      <default>true</default>
+      <summary>Show charging and low battery in the notch</summary>
+    </key>
+    <key name="git" type="b">
+      <default>true</default>
+      <summary>Show git commands in the notch</summary>
+      <description>Push, pull, commit and other commands run in a terminal open the notch with their progress, then how they went. Git has to be pointed at the notch once (trace2.eventTarget, see the preferences).</description>
+    </key>
+    <key name="hover-delay" type="i">
+      <range min="0" max="2000"/>
+      <default>120</default>
+      <summary>Delay before expanding on hover (ms)</summary>
+    </key>
+    <key name="collapse-delay" type="i">
+      <range min="0" max="3000"/>
+      <default>250</default>
+      <summary>Delay before collapsing after the pointer leaves (ms)</summary>
+    </key>
+  </schema>
+</schemalist>

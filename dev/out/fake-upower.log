@@ -1,0 +1,4 @@
+READY
+SET state=1 percentage=50
+SET state=2 percentage=21
+SET state=2 percentage=19

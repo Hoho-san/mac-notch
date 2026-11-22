@@ -1,0 +1,8 @@
+{
+  "uuid": "notch@hoho-san",
+  "name": "Notch",
+  "description": "A macOS-style notch for the GNOME top bar: it holds the clock and expands on hover.",
+  "shell-version": ["50"],
+  "settings-schema": "org.gnome.shell.extensions.notch",
+  "version-name": "0.1"
+}

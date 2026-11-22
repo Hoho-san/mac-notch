@@ -1,0 +1,338 @@
+/* The notch body itself is painted in notch.js (Cairo), so it can morph
+ * between shapes; this file only styles what sits inside it. */
+
+/* Header: the clock, always visible */
+
+.notch-clock-box {
+  padding: 0 14px;
+  spacing: 4px;
+}
+
+.notch-clock {
+  color: #ffffff;
+  font-weight: bold;
+  font-feature-settings: "tnum";
+}
+
+/* Compact activity, at the pill's edges */
+
+.notch-art-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.notch-art-thumb .notch-art-fallback {
+  icon-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.notch-visualizer {
+  spacing: 2px;
+  height: 14px;
+}
+
+.notch-bar {
+  width: 3px;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+/* Expanded body */
+
+.notch-body {
+  padding: 4px 20px 16px 20px;
+}
+
+.notch-media-empty {
+  spacing: 10px;
+  padding: 6px 14px 2px 14px;
+}
+
+.notch-media-empty-icon {
+  icon-size: 16px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.notch-media-empty-label {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
+
+.notch-player {
+  spacing: 8px;
+}
+
+.notch-player-top {
+  spacing: 14px;
+}
+
+.notch-art-button {
+  border-radius: 12px;
+}
+
+.notch-art {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.notch-art .notch-art-fallback {
+  icon-size: 26px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.notch-player-info {
+  spacing: 2px;
+}
+
+.notch-player-title {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.notch-player-artist {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}
+
+.notch-progress-row {
+  spacing: 10px;
+}
+
+.notch-time {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-weight: 600;
+  font-feature-settings: "tnum";
+  min-width: 34px;
+}
+
+.notch-time-remaining {
+  text-align: right;
+}
+
+.notch-progress {
+  min-height: 14px;
+  color: #ffffff;
+  -barlevel-height: 5px;
+  -barlevel-background-color: rgba(255, 255, 255, 0.18);
+  -barlevel-active-background-color: rgba(255, 255, 255, 0.85);
+  -slider-handle-radius: 0;
+}
+
+.notch-progress:hover {
+  -slider-handle-radius: 6px;
+}
+
+.notch-controls {
+  spacing: 22px;
+}
+
+.notch-control {
+  color: #ffffff;
+  border-radius: 99px;
+  padding: 6px;
+}
+
+.notch-control StIcon {
+  icon-size: 18px;
+}
+
+.notch-control.notch-control-main StIcon {
+  icon-size: 24px;
+}
+
+.notch-control:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.notch-control:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.notch-control:insensitive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Volume, brightness and other system pop-ups, at the pill's edges */
+
+.notch-osd-icon {
+  icon-size: 16px;
+  color: #ffffff;
+}
+
+.notch-osd-level {
+  width: 72px;
+  -barlevel-height: 5px;
+  -barlevel-background-color: rgba(255, 255, 255, 0.22);
+  -barlevel-active-background-color: #ffffff;
+  -barlevel-overdrive-color: #ff7a59;
+  -barlevel-overdrive-separator-width: 0;
+}
+
+.notch-osd-label {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  max-width: 150px;
+}
+
+/* Notifications, shown when the notch opens by itself */
+
+.notch-notification {
+  border-radius: 16px;
+  padding: 8px 10px;
+}
+
+.notch-notification:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.notch-notification-box {
+  spacing: 12px;
+}
+
+.notch-notification-icon {
+  icon-size: 32px;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+.notch-notification-text {
+  spacing: 1px;
+}
+
+.notch-notification-source {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.notch-notification-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.notch-notification-body {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  max-height: 2.6em;
+}
+
+.notch-notification-actions {
+  spacing: 8px;
+  padding-top: 8px;
+}
+
+.notch-notification-action {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.notch-notification-action:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.notch-notification-close {
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 99px;
+  padding: 4px;
+}
+
+.notch-notification-close StIcon {
+  icon-size: 14px;
+}
+
+.notch-notification-close:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Battery moments, at the pill's edges */
+
+.notch-battery-icon {
+  icon-size: 16px;
+}
+
+.notch-battery-label {
+  font-size: 12px;
+  font-weight: bold;
+  font-feature-settings: "tnum";
+}
+
+.notch-battery-icon.charging,
+.notch-battery-label.charging {
+  color: #4cd964;
+}
+
+.notch-battery-icon.low,
+.notch-battery-label.low {
+  color: #ff453a;
+}
+
+/* Git commands: a notification-style view with a loading bar, and while
+ * one runs long, the logo and a small bar at the pill's edges */
+
+.notch-git-activity-icon {
+  icon-size: 16px;
+}
+
+.notch-git-activity-bar,
+.notch-git-bar {
+  -barlevel-height: 5px;
+  -barlevel-background-color: rgba(255, 255, 255, 0.18);
+  -barlevel-active-background-color: #ffffff;
+  -barlevel-overdrive-color: #ffffff;
+  -barlevel-overdrive-separator-width: 0;
+}
+
+.notch-git-activity-bar {
+  width: 64px;
+  height: 12px;
+}
+
+.notch-git-bar {
+  height: 12px;
+  margin: 3px 0 1px 0;
+}
+
+.notch-git-bar.success,
+.notch-git-activity-bar.success {
+  -barlevel-active-background-color: #4cd964;
+}
+
+.notch-git-bar.failure,
+.notch-git-activity-bar.failure {
+  -barlevel-active-background-color: #ff453a;
+}
+
+.notch-git-bar.paused,
+.notch-git-activity-bar.paused {
+  -barlevel-active-background-color: #ffb340;
+}
+
+.notch-git-bar.cancelled,
+.notch-git-activity-bar.cancelled {
+  -barlevel-active-background-color: rgba(255, 255, 255, 0.4);
+}
+
+.notch-git-detail {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-feature-settings: "tnum";
+}
+
+.notch-git-body-view {
+  margin-bottom: 6px;
+}
