@@ -1,0 +1,15 @@
+# Test-run output from the dev/ scripts (screenshots + logs)
+# Covers dev/out, dev/out-git, dev/out-multimonitor, dev/out-perf, ...
+dev/out*/
+
+# Screenshots / raster images anywhere in the repo
+# (SVG icons in notch@hoho-san/icons/ are NOT ignored)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+
+# Logs
+*.log
