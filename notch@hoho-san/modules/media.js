@@ -32,6 +32,13 @@ const BAR_IDLE_SCALE = 0.22;
 const DEFAULT_ACCENT = 'rgb(255, 255, 255)';
 const FALLBACK_ICON = new Gio.ThemedIcon({name: 'audio-x-generic-symbolic'});
 
+// Filled, rounded transport icons from icons/. The -symbolic suffix makes the
+// shell recolour them from the CSS, like theme icons.
+function controlIcon(extensionPath, name) {
+    return Gio.icon_new_for_string(GLib.build_filenamev(
+        [extensionPath, 'icons', `notch-media-${name}-symbolic.svg`]));
+}
+
 function formatTime(us) {
     const total = Math.floor(us / 1e6);
     const h = Math.floor(total / 3600);
@@ -172,12 +179,15 @@ class NotchProgressSlider extends Slider {
 const MediaView = GObject.registerClass({
     Signals: {'busy-changed': {}},
 }, class NotchMediaView extends St.BoxLayout {
-    _init(settings) {
+    _init(settings, extensionPath) {
         super._init({
             style_class: 'notch-media',
             orientation: Clutter.Orientation.VERTICAL,
         });
         this._settings = settings;
+        this._icons = Object.fromEntries(
+            ['skip-backward', 'skip-forward', 'play', 'pause'].map(
+                name => [name, controlIcon(extensionPath, name)]));
 
         this._player = null;
         this._dragging = false;
@@ -281,12 +291,12 @@ const MediaView = GObject.registerClass({
             style_class: 'notch-controls',
             x_align: Clutter.ActorAlign.CENTER,
         });
-        this._prev = this._controlButton('media-skip-backward-symbolic', 'Previous',
+        this._prev = this._controlButton(this._icons['skip-backward'], 'Previous',
             () => this._player?.previous());
-        this._playPause = this._controlButton('media-playback-start-symbolic', 'Play',
+        this._playPause = this._controlButton(this._icons.play, 'Play',
             () => this._player?.playPause());
         this._playPause.add_style_class_name('notch-control-main');
-        this._next = this._controlButton('media-skip-forward-symbolic', 'Next',
+        this._next = this._controlButton(this._icons['skip-forward'], 'Next',
             () => this._player?.next());
         [this._prev, this._playPause, this._next].forEach(b => controls.add_child(b));
         this._playerBox.add_child(controls);
@@ -294,10 +304,10 @@ const MediaView = GObject.registerClass({
         this.add_child(this._playerBox);
     }
 
-    _controlButton(iconName, label, onClicked) {
+    _controlButton(gicon, label, onClicked) {
         const button = new St.Button({
             style_class: 'notch-control',
-            icon_name: iconName,
+            child: new St.Icon({gicon}),
             accessible_name: label,
             can_focus: true,
         });
@@ -331,8 +341,7 @@ const MediaView = GObject.registerClass({
 
         const playing = player.status === Status.PLAYING;
         this._visualizer.setPlaying(playing);
-        this._playPause.icon_name = playing
-            ? 'media-playback-pause-symbolic' : 'media-playback-start-symbolic';
+        this._playPause.child.gicon = playing ? this._icons.pause : this._icons.play;
         this._playPause.accessible_name = playing ? 'Pause' : 'Play';
         this._prev.reactive = player.canGoPrevious;
         this._next.reactive = player.canGoNext;
@@ -386,8 +395,9 @@ export class MediaModule extends EventEmitter {
     /**
      * @param {Gio.Settings} settings
      * @param {string} cacheDir - for downloaded album art
+     * @param {string} extensionPath - where the icons/ folder is
      */
-    constructor(settings, cacheDir) {
+    constructor(settings, cacheDir, extensionPath) {
         super();
         this._settings = settings;
         this._art = new ArtLoader(cacheDir);
@@ -397,7 +407,7 @@ export class MediaModule extends EventEmitter {
 
         this.activityStart = new AlbumArt({style_class: 'notch-art-thumb'});
         this.activityEnd = new Visualizer(settings);
-        this.body = new MediaView(settings);
+        this.body = new MediaView(settings, extensionPath);
         this.body.connect('busy-changed', () => this.emit('changed'));
 
         this._watcher = new MprisWatcher();

@@ -27,7 +27,7 @@ export default class NotchExtension extends Extension {
             new BatteryModule(this._settings),
             new NotificationsModule(this._settings, isNotchShowing),
             new GitModule(this._settings, this.path),
-            new MediaModule(this._settings, GLib.build_filenamev([cacheDir, 'art'])),
+            new MediaModule(this._settings, GLib.build_filenamev([cacheDir, 'art']), this.path),
         ];
 
         this._notch = new Notch(this._settings, this._dateMenu, modules);

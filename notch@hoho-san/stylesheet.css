@@ -131,21 +131,21 @@
 }
 
 .notch-controls {
-  spacing: 22px;
+  spacing: 25px;
 }
 
 .notch-control {
   color: #ffffff;
   border-radius: 99px;
-  padding: 6px;
+  padding: 7px;
 }
 
 .notch-control StIcon {
-  icon-size: 18px;
+  icon-size: 24px;
 }
 
 .notch-control.notch-control-main StIcon {
-  icon-size: 24px;
+  icon-size: 30px;
 }
 
 .notch-control:hover {
